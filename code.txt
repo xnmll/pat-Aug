@@ -1,0 +1,829 @@
+//Date: Aug 1    target: 20
+
+//#include <cstdio>//B1001 01_01
+//int main(){
+//    int n,step=0;
+//    scanf("%d",&n);
+//    while(n!=1){
+//        if(n%2==0) n=n/2;
+//        else n=(3*n+1)/2;
+//        step++;
+//    }
+//    printf("%d",step);
+//    return 0;
+//}
+
+//#include <cstdio>//B1011 01_02
+//int main(){
+//    int n,tcase=1;
+//    scanf("%d",&n);
+//    while(n--){
+//        long long a,b,c;
+//        scanf("%lld %lld %lld",&a,&b,&c);
+//        if(a+b>c) printf("Case #%d: true\n",tcase);
+//        else printf("Case #%d: false\n",tcase);
+//        tcase++;
+//    }
+//    return 0;
+//}
+
+//#include <cstdio>//B1016 01_03
+//int main(){
+//    long long n1,n2;
+//    long long l1,l2,r1=0,r2=0;
+//    scanf("%lld %lld %lld %lld",&l1,&n1,&l2,&n2);
+//    while(l1!=0){
+//        if(l1%10==n1) r1=r1*10+n1;
+//        l1/=10;
+//    }
+//    while(l2!=0){
+//        if(l2%10==n2) r2=r2*10+n2;
+//        l2/=10;
+//    }
+//    printf("%lld\n",r1+r2);
+//    return 0;
+//}
+
+//#include <cstdio>//B1026 01_04
+//int main(){
+//    int c1,c2,c3;
+//    scanf("%d %d",&c1,&c2);
+//    if((c2-c1)%100>=50) c3=(c2-c1)/100+1;
+//    else c3=(c2-c1)/100;
+//    printf("%02d:%02d:%02d",c3/3600,c3%3600/60,c3%60);
+//    return 0;
+//}
+
+//#include <cstdio>//B1046 01_05
+//int main(){
+//    int n,r1=0,r2=0;
+//    scanf("%d",&n);
+//    while(n--){
+//        int a1,a2,b1,b2;
+//        scanf("%d %d %d %d",&a1,&a2,&b1,&b2);
+//        if(a1+b1==a2&&a1+b1!=b2) r2++;
+//        if(a1+b1!=a2&&a1+b1==b2) r1++;
+//    }
+//    printf("%d %d\n",r1,r2);
+//    return 0;
+//}
+
+//#include <cstdio>//B1008 01_06
+//int main(){
+//    int m,n;
+//    scanf("%d %d",&n,&m);
+//    int a[n];
+//    m%=n;
+//    for(int i=m;i<n;i++) scanf("%d",&a[i]);
+//    for(int i=0;i<m;i++) scanf("%d",&a[i]);
+//    for(int i=0;i<n;i++){
+//        printf("%d",a[i]);
+//        if(i!=n-1) printf(" ");
+//    }
+//    return 0;
+//}
+
+//#include <cstdio>//B1012 01_07
+//int main(){
+//    int n,temp,count[5]={0},ans[5]={0};
+//    scanf("%d",&n);
+//    while(n--){
+//        scanf("%d",&temp);
+//        if(temp%10==0){
+//            count[0]++;
+//            ans[0]+=temp;
+//        }else if(temp%5==1){
+//            count[1]++;
+//            if(count[1]%2==1) ans[1]+=temp;
+//            else ans[1]-=temp;
+//        }else if(temp%5==2) count[2]++;
+//        else if(temp%5==3){
+//            count[3]++;
+//            ans[3]+=temp;
+//        }else if(temp%5==4){
+//            count[4]++;
+//            if(temp>ans[4]) ans[4]=temp;
+//        }
+//    }
+//    if(count[0]==0) printf("N ");
+//    else printf("%d ",ans[0]);
+//    if(count[1]==0) printf("N ");
+//    else printf("%d ",ans[1]);
+//    if(count[2]==0) printf("N ");
+//    else printf("%d ",count[2]);
+//    if(count[3]==0) printf("N ");
+//    else printf("%.1f ",((double)ans[3])/count[3]);
+//    if(count[4]==0) printf("N");
+//    else printf("%d",ans[4]);
+//    return 0;
+//}
+
+
+/**
+Aug is coming . regard it . just do it .
+*/
+
+//Date: Aug 5    target: 20
+
+//#include <cstdio>//B1018 05_01 error
+//int change(char c){
+//    if(c=='J') return 0;
+//    if(c=='B') return 1;
+//    if(c=='C') return 2;
+//}
+//int main(){
+//    char mp[3]={'B','C','J'};
+//    int n,time_a[3]={0},time_b[3]={0},hand_a[3]={0},hand_b[3]={0},max1=0,max2=0;
+//    scanf("%d",&n);
+//    char a,b;
+//    while(n--){
+//        getchar();
+//        scanf("%c %c",&a,&b);
+//        int a1=change(a);
+//        int b1=change(b);
+//        if((a1+1)%3==b1){//#1 win
+//            time_a[0]++;
+//            time_b[2]++;
+//            hand_a[a1]++;
+//        }else if(a1==b1){
+//            time_a[1]++;
+//            time_b[1]++;
+//        }else{
+//            time_a[2]++;
+//            time_b[0]++;
+//            hand_a[b1]++;
+//        }
+//    }
+//    printf("%d %d %d\n",time_a[0],time_a[1],time_a[2]);
+//    printf("%d %d %d\n",time_b[0],time_b[1],time_b[2]);
+//    for(int i=0;i<3;i++){
+//        if(hand_a[i]>hand_a[max1]) max1=i;
+//        if(hand_b[i]>hand_b[max2]) max2=i;
+//    }
+//    printf("%c %c\n",mp[max1],mp[max2]);
+//    return 0;
+//}
+
+//#include <cstdio>//A1042 05_02
+//int main(){
+//    char mp[5]={'S','H','C','D','J'};
+//    int n,start[55],end[55],next[55];
+//    scanf("%d",&n);
+//    for(int i=1;i<=54;i++) start[i]=i;
+//    for(int i=1;i<=54;i++) scanf("%d",&next[i]);
+//    while(n--){
+//        for(int i=1;i<=54;i++) end[next[i]]=start[i];
+//        for(int i=0;i<=54;i++) start[i]=end[i];
+//    }
+//    for(int i=1;i<=54;i++){
+//        if(i!=1) printf(" ");
+//        start[i]--;
+//        printf("%c%d",mp[start[i]/13],start[i]%13+1);
+//    }
+//    return 0;
+//}
+
+//#include <cstdio>//A1046 05_03
+//#include <algorithm>
+//using namespace std;
+//const int maxn=100005;
+//int dis[maxn],A[maxn];
+//int main(){
+//    int sum=0,query,n,left,right;
+//    scanf("%d",&n);
+//    for(int i=1;i<=n;i++){
+//        scanf("%d",&A[i]);
+//        sum+=A[i];
+//        dis[i]=sum;
+//    }
+//    scanf("%d",&query);
+//    for(int i=0;i<query;i++){
+//        scanf("%d%d",&left,&right);
+//        if(left>right) swap(left,right);
+//        int temp=dis[right-1]-dis[left-1];
+//        printf("%d\n",min(temp,sum-temp));
+//    }
+//    return 0;
+//}
+
+//#include <cstdio>//A1065 05_04
+//int main(){
+//    int t,tcase=1;
+//    scanf("%d",&t);
+//    while(t--){
+//        long long a,b,c,res;
+//        scanf("%lld %lld %lld",&a,&b,&c);
+//        res=a+b;
+//        if(a>0&&b>0&&res<0) printf("Case #%d: true\n",tcase++);
+//        else if(a<0&&b<0&&res>=0) printf("Case #%d: false\n",tcase++);
+//        else if(res>c) printf("Case #%d: true\n",tcase++);
+//        else printf("Case #%d: false\n",tcase++);
+//    }
+//    return 0;
+//}
+
+/**
+Aug is coming . regard it . just do it .
+
+*/
+
+//#include <cstdio//B1010 14_01
+//int main(){
+//    int a[1010]={0},k,e,count=0;
+//    while(scanf("%d %d",&k,&e)!=EOF){
+//        a[e]=k;
+//    }
+//    a[0]=0;
+//    for(int i=1;i<=1000;i++){
+//        a[i-1]=a[i]*i;
+//        if(a[i-1]!=0) count++;
+//    }
+//    a[1000]=0;
+//    if(count==0) printf("0 0");
+//    else{
+//        for(int i=1000;i>=0;i--){
+//            if(a[i]!=0){
+//                printf("%d %d",a[i],i);
+//                count--;
+//                if(count!=0) printf(" ");
+//            }
+//        }
+//    }
+//    return 0;
+//}
+
+//#include <cstdio>//A1002 14_02
+//double p[1000]={};
+//int main(){
+//    int k,n,count=0;
+//    double a;
+//    scanf("%d",&k);
+//    for(int i=0;i<k;i++){
+//        scanf("%d %lf",&n,&a);
+//        p[n]+=a;
+//    }
+//    scanf("%d",&k);
+//    for(int i=0;i<k;i++){
+//        scanf("%d %lf",&n,&a);
+//        p[n]+=a;
+//    }
+//    for(int i=0;i<=1000;i++){
+//        if(p[i]!=0) count++;
+//    }
+//    printf("%d",count);
+//    for(int i=1000;i>=0;i--){
+//        if(p[i]!=0) printf(" %d %.1f",i,p[i]);
+//    }
+//    return 0;
+//}
+
+//#include <cstdio>A1009 14_03
+//int main(){
+//    int a,n1,n2,cunt=0;
+//    double b,arr[1001]={0.0},ans[2001]={0.0};
+//    scanf("%d",&n1);
+//    for(int i=0;i<n1;i++){
+//        scanf("%d %lf",&a,&b);
+//        arr[a]=b;
+//    }
+//    scanf("%d",&n2);
+//    for(int i=0;i<n2;i++){
+//        scanf("%d %lf",&a,&b);
+//        for(int j=0;j<1001;j++){
+//            ans[j+a] += arr[j]*b;
+//        }
+//    }
+//    for(int i=2000;i>=0;i--){
+//        if(ans[i]!=0.0) cunt++;
+//
+//    }
+//    printf("%d",cunt);
+//    for(int i=2000;i>=0;i--){
+//        if(ans[i]!=0.0) printf(" %d %.1f",i,ans[i]);
+//    }
+//    return 0;
+//}
+
+//#include <cstdio>B1004 14_04
+//struct Student{
+//    long long id;
+//    int examSeat;
+//}testSeat[1000];
+//int main(){
+//    int n,m,seat,examSeat;
+//    long long id;
+//    scanf("%d",&n);
+//    while(n--){
+//        scanf("%lld %d %d",&id,&seat,&examSeat);
+//        testSeat[seat].id=id;
+//        testSeat[seat].examSeat=examSeat;
+//    }
+//    scanf("%d",&m);
+//    for(int i=0;i<m;i++){
+//        scanf("%d",&seat);
+//        printf("%lld %d\n",testSeat[seat].id,testSeat[seat].examSeat);
+//    }
+//    return 0;
+//}
+
+//#include <cstdio>B1028 14_05
+//struct person{
+//    char name[10];
+//    int yy,mm,dd;
+//}oldest,youngest,left,right,temp;
+//bool LessEqu(person a,person b){
+//    if(a.yy!=b.yy) return a.yy<=b.yy;
+//    else if(a.mm!=b.mm) return a.mm<=b.mm;
+//    else return a.dd<=b.dd;
+//}
+//bool MoreEqe(person a,person b){
+//    if(a.yy!=b.yy) return a.yy>=b.yy;
+//    else if(a.mm!=b.mm) return a.mm>=b.mm;
+//    else return a.dd>=b.dd;
+//}
+//void init(){
+//    youngest.yy=left.yy=1814;
+//    oldest.yy=right.yy=2014;
+//    youngest.mm=oldest.mm=left.mm=right.mm=9;
+//    youngest.dd=oldest.dd=left.dd=right.dd=6;
+//}
+//int main(){
+//    init();
+//    int n,num=0;
+//    scanf("%d",&n);
+//    while(n--){
+//        scanf("%s %d/%d/%d",temp.name,&temp.yy,&temp.mm,&temp.dd);
+//        if(MoreEqe(temp,left)&&LessEqu(temp,right)){
+//            num++;
+//            if(LessEqu(temp,oldest)) oldest=temp;
+//            if(MoreEqe(temp,youngest)) youngest=temp;
+//        }
+//    }
+//    if(num==0) printf("0\n");
+//    else printf("%d %s %s\n",num,oldest.name,youngest.name);
+//    return 0;
+//}
+
+//#include <cstdio>B1032 14_06
+//int school[100000]={0};
+//int main(){
+//    int n,id,score,maxid=1,maxscore=-1;
+//    scanf("%d",&n);
+//    while(n--){
+//        scanf("%d %d",&id,&score);
+//        school[id] += score;
+//    }
+//    for(int i=1;i<=100000;i++){
+//        if(school[i]>maxscore){
+//            maxscore=school[i];
+//            maxid=i;
+//        }
+//    }
+//    printf("%d %d\n",maxid,maxscore);
+//    return 0;
+//}
+
+//#include <cstdio>A1011 14_07
+//int main(){
+//    char S[3]={'W','T','L'};
+//    double a,ans=1.0;
+//    int idx;
+//    for(int i=0;i<3;i++){
+//        double temp=0.0;
+//        for(int j=0;j<3;j++){
+//            scanf("%lf",&a);
+//            if(temp<a){
+//                temp=a;
+//                idx=j;
+//            }
+//        }
+//        ans*=temp;
+//        printf("%c ",S[idx]);
+//    }
+//    printf("%.2f",(ans*0.65-1)*2);
+//    return 0;
+//}
+
+//#include <cstdio>A1006 14_08
+//struct pNode{
+//    char id[20];
+//    int hh,mm,ss;
+//}ans1,ans2,temp;
+//bool compare(pNode p1,pNode p2){
+//    if(p1.hh!=p2.hh) return p1.hh>p2.hh;
+//    if(p1.mm!=p2.mm) return p1.mm>p2.mm;
+//    if(p1.ss!=p2.ss) return p1.ss>p2.ss;
+//}
+//int main(){
+//    int n;
+//    scanf("%d",&n);
+//    ans1.hh=24,ans1.mm=60;ans1.ss=60;
+//    ans2.hh=0,ans2.mm=0,ans2.ss=0;
+//    while(n--){
+//        scanf("%s %d:%d:%d",temp.id,&temp.hh,&temp.mm,&temp.ss);
+//        if(compare(temp,ans1)==false) ans1=temp;
+//        scanf("%d:%d:%d",&temp.hh,&temp.mm,&temp.ss);
+//        if(compare(temp,ans2)) ans2=temp;
+//    }
+//    printf("%s %s\n",ans1.id,ans2.id);
+//    return 0;
+//}
+
+//#include <cstdio>A1036 14_09
+//struct perosn{
+//    char name[15];
+//    char id[15];
+//    int score;
+//}M,F,temp;
+//int main(){
+//    M.score=101;
+//    F.score=-1;
+//    char gender;
+//    int n;
+//    scanf("%d",&n);
+//    while(n--){
+//        scanf("%s %c %s %d",temp.name,&gender,temp.id,&temp.score);
+//        if(gender=='M'&&temp.score<M.score) M=temp;
+//        else if(gender=='F'&&temp.score>F.score) F=temp;
+//    }
+//    if(F.score==-1) printf("Absent\n");
+//    else printf("%s %s\n",F.name,F.id);
+//    if(M.score==101) printf("Absent\n");
+//    else printf("%s %s\n",M.name,M.id);
+//    if(F.score==-1||M.score==101) printf("NA\n");
+//    else printf("%d\n",F.score-M.score);
+//    return 0;
+//}
+
+//#include <cstdio>B1036 14_10
+//int main(){
+//    int hang,lie;
+//    char c;
+//    scanf("%d %c",&hang,&c);
+//    if(hang%2==1) lie=hang/2+1;
+//    else lie=hang/2;
+//    for(int i=0;i<hang;i++){
+//        printf("%c",c);
+//    }
+//    printf("\n");
+//    for(int i=2;i<lie;i++){
+//        printf("%c",c);
+//        for(int i=0;i<hang-2;i++){
+//            printf(" ");
+//        }
+//        printf("%c",c);
+//        printf("\n");
+//    }
+//    for(int i=0;i<hang;i++){
+//        printf("%c",c);
+//    }
+//    printf("\n");
+//    return 0;
+//}
+
+/**
+Aug is coming . regard it . just do it .
+Date: Aug 15    target: 20
+*/
+
+//#include <cstdio>B1027 15_01
+//#include <cmath>
+//int main(){
+//    int sum,hang;
+//    char c;
+//    scanf("%d %c",&sum,&c);
+//    hang=(int)sqrt((sum+1)*2.0)-1;
+//    if(hang%2==0) hang--;
+//    for(int i=hang;i>=1;i-=2){
+//        for(int j=0;j<(hang-i)/2;j++){
+//            printf(" ");
+//        }
+//        for(int j=0;j<i;j++){
+//            printf("%c",c);
+//        }
+//        printf("\n");
+//    }
+//    for(int i=3;i<=hang;i+=2){
+//        for(int j=0;j<(hang-i)/2;j++){
+//            printf(" ");
+//        }
+//        for(int j=0;j<i;j++){
+//            printf("%c",c);
+//        }
+//        printf("\n");
+//    }
+//    printf("%d\n",sum-(hang+1)*(hang+1)/2+1);
+//    return 0;
+//}
+
+//#include <cstdio>A1031 15_02
+//#include <cstring>
+//int main(){
+//    char str[100];
+//    fgets(str,sizeof(str),stdin);
+//    if(str[strlen(str) - 1] == '\n') str[strlen(str) - 1] = '\0';
+//    int N=strlen(str);
+//    int n1=(N+2)/3,n3=n1,n2=N+2-n1-n3;
+//    for(int i=0;i<n1-1;i++){
+//        printf("%c",str[i]);
+//        for(int j=0;j<n2-2;j++) printf(" ");
+//        printf("%c\n",str[N-i-1]);
+//    }
+//    for(int i=0;i<n2;i++) printf("%c",str[n1+i-1]);
+//    return 0;
+//}
+
+//#include <cstdio>B1022 15_03
+//int main(){
+//    int a,b,d;
+//    scanf("%d%d%d",&a,&b,&d);
+//    int sum=a+b;
+//    int ans[31],num=0;
+//    do{
+//        ans[num++]=sum%d;
+//        sum/=d;
+//    }
+//    while(sum!=0);
+//    for(int i=num-1;i>=0;i--) printf("%d",ans[i]);
+//    return 0;
+//}
+
+//#include <cstdio>B1037 15_04
+//int main(){
+//    int Galleon=17*29;
+//    int Sickle=29;
+//    int a1,a2,a3,b1,b2,b3;
+//    scanf("%d.%d.%d %d.%d.%d",&a1,&a2,&a3,&b1,&b2,&b3);
+//    int needpaid=a1*Galleon+a2*Sickle+a3;
+//    int paid=b1*Galleon+b2*Sickle+b3;
+//    int change=paid-needpaid;
+//    if(change<0){
+//        printf("-");
+//        change=-change;
+//    }
+//    printf("%d.%d.%d\n",change/Galleon,change%Galleon/Sickle,change%Sickle);
+//    return 0;
+//}
+
+//#include <cstdio>A1019 15_05
+//int main(){
+//    int a,b,arr[40],index=0;
+//    scanf("%d %d",&a,&b);
+//    while(a!=0){
+//        arr[index++]=a%b;
+//        a/=b;
+//    }
+//    int flag=0;
+//    for(int i=0;i<index/2;i++){
+//        if(arr[i]!=arr[index-i-1]){
+//            printf("No\n");
+//            flag=1;
+//            break;
+//        }
+//    }
+//    if(!flag) printf("Yes\n");
+//    for(int i=index-1;i>=0;i--){
+//        printf("%d",arr[i]);
+//        if(i!=0) printf(" ");
+//    }
+//    if(index==0) printf("0");
+//    return 0;
+//}
+
+//#include <cstdio>A1027 15_06
+//char radix[13]={'0','1','2','3','4','5','6','7','8','9','A','B','C'};
+//int main(){
+//    int r,g,b;
+//    scanf("%d%d%d",&r,&g,&b);
+//    printf("#");
+//    printf("%c%c",radix[r/13],radix[r%13]);
+//    printf("%c%c",radix[g/13],radix[g%13]);
+//    printf("%c%c",radix[b/13],radix[b%13]);
+//    return 0;
+//}
+
+//#include <cstdio>A1058 15_07
+//int main(){
+//    long long Galleon=17*29;
+//    int Sickle=29;
+//    int a1,a2,a3,b1,b2,b3;
+//    scanf("%d.%d.%d %d.%d.%d",&a1,&a2,&a3,&b1,&b2,&b3);
+//    long long sum=a1*Galleon+b1*Galleon+a2*Sickle+b2*Sickle+a3+b3;
+//    printf("%lld.%d.%d",sum/Galleon,sum%Galleon/Sickle,sum%Sickle);
+//    return 0;
+//}
+
+//#include <cstdio>B1006 15_08
+//int main(){
+//    int n,num=0,ans[5];
+//    scanf("%d",&n);
+//    while(n!=0){
+//        ans[num++]=n%10;
+//        n/=10;
+//    }
+//    for(int i=num-1;i>=0;i--){
+//        if(i==2){
+//            for(int j=0;j<ans[i];j++) printf("B");
+//        }else if(i==1){
+//            for(int j=0;j<ans[i];j++) printf("S");
+//        }else{
+//            for(int j=1;j<=ans[i];j++) printf("%d",j);
+//        }
+//    }
+//    return 0;
+//}
+
+//#include <cstdio>B1021 15_09
+//#include <cstring>
+//int main(){
+//    char str[1001];
+//    fgets(str,sizeof(str),stdin);
+//    int len=strlen(str);
+//    int count[10]={0};
+//    for(int i=0;i<len;i++) count[str[i]-'0']++;
+//    for(int i=0;i<10;i++){
+//        if(count[i]!=0) printf("%d:%d\n",i,count[i]);
+//    }
+//    return 0;
+//}
+
+//#include <cstdio>B1031 15_10
+//#include <cstring>
+//int w[20]={7,9,10,5,8,4,2,1,6,3,7,9,10,5,8,4,2};
+//char change[15]={'1','0','X','9','8','7','6','5','4','3','2'};
+//int main(){
+//    int n;
+//    scanf("%d",&n);
+//    bool flag=true;
+//    char str[20];
+//    while(n--){
+//        int i,last=0;
+//        scanf("%s",str);
+//        for(i=0;i<17;i++){
+//            if(!(str[i]>='0'&&str[i]<='9')) break;
+//            last+=(str[i]-'0')*w[i];
+//        }
+//        if(i<17){
+//            flag=false;
+//            printf("%s\n",str);
+//        }else{
+//            if(change[last%11]!=str[17]){
+//                flag=false;
+//                printf("%s\n",str);
+//            }
+//        }
+//    }
+//    if(flag==true) printf("All passed\n");
+//    return 0;
+//}
+
+
+/**
+Aug is coming . regard it . just do it .
+Date: Aug 16    target: 10
+*/
+
+//#include <cstdio>B1002 16_01
+//#include <cstring>
+//int main(){
+//    char str[110];
+//    fgets(str,sizeof(str),stdin);
+//    if(str[strlen(str) - 1] == '\n') str[strlen(str) - 1] = '\0';
+//    int len=strlen(str),sum=0,num=0,ans[10]={0};
+//    char change[10][5]={
+//        "ling","yi","er","san","si","wu","liu","qi","ba","jiu"
+//    };
+//    for(int i=0;i<len;i++) sum+=str[i]-'0';
+//    while(sum!=0){
+//        ans[num++]=sum%10;
+//        sum/=10;
+//    }
+//    for(int i=num-1;i>=0;i--){
+//        printf("%s",change[ans[i]]);
+//        if(i!=0) printf(" ");
+//        else printf("\n");
+//    }
+//    return 0;
+//}
+//#include <cstdio>
+//int main(){
+//    long long n;
+//    char change[10][5]={
+//        "ling","yi","er","san","si","wu","liu","qi","ba","jiu"
+//    };
+//    int sum=0,num=0,num2=0,ans[1000]={0},ans2[100]={0};
+//    scanf("%lld",&n);
+//    while(n!=0){
+//        ans[num++]=n%10;
+//        n/=10;
+//    }
+//    for(int i=num-1;i>=0;i--) sum+=ans[i];
+//    while(sum!=0){
+//        ans2[num2++]=sum%10;
+//        sum/=10;
+//    }
+//    for(int i=num2-1;i>=0;i--){
+//        printf("%s",change[ans2[i]]);
+//        if(i!=0) printf(" ");
+//    }
+//    return 0;
+//}
+
+//#include <cstdio>B1009 16_02
+//#include <cstring>
+//int main(){
+//    char str[90];
+//    fgets(str,sizeof(str),stdin);
+//    if(str[strlen(str)-1]=='\n') str[strlen(str)-1]='\0';
+//    char ans[90][90];
+//    int len=strlen(str),r=0,h=0;
+//    for(int i=0;i<len;i++){
+//        if(str[i]!=' '){
+//            ans[r][h++]=str[i];
+//        }else{
+//            r++;
+//            h=0;
+//            ans[r][h]='\0';
+//        }
+//    }
+//    for(int i=r;i>=0;i--){
+//        printf("%s",ans[i]);
+//        if(i>0) printf(" ");
+//    }
+//    return 0;
+//}
+
+//#include<iostream>B1014/A1061 16_03
+//using namespace std;
+//int main()
+//{
+//    string a,b,c,d;
+//    int flag=0;
+//    string week[7]={"MON","TUE","WED","THU","FRI","SAT","SUN"};
+//    cin>>a>>b>>c>>d;
+//    int length1=a.length()>b.length()?b.length():a.length();
+//    for(int i=0;i<length1;i++)
+//    {   //寻找第一个相同的大写字母，因为对应的是星期几，所以只找前7个即可
+//        if(a[i]==b[i]&&(a[i]>=65&&a[i]<=71)&&flag==0)
+//        {
+//            flag=1;
+//            cout<<week[a[i]-65]<<" ";
+//            i++;
+//        }//注意找第二对相同的字符的时候，是从第一队相同大写字母后面找
+//        //因为样例中8相同，但是他却说E是相同的字符，其次该字符必须在
+//        //0-9或者A-N之间才行。
+//        if(flag==1&&a[i]==b[i])
+//        {
+//            if(a[i]>='0'&&a[i]<='9')
+//            {
+//                cout<<"0"<<a[i]-'0'<<":";
+//                break;
+//            }
+//            if(a[i]>='A'&&a[i]<='N')
+//            {
+//                cout<<a[i]-65+10<<":";
+//                break;
+//            }
+//        }
+//    }
+//    int length2=c.length()>d.length()?d.length():c.length();
+//    for(int i=0;i<length2;i++)
+//    {   //后两字符串必须满足是两个英文字母相等才可以
+//        if(c[i]==d[i]&&((c[i]>=65&&c[i]<=90)||(c[i]>=97&&c[i]<=122)))
+//        {
+//            if(i<=9)    //不足两位数补0
+//            {
+//                cout<<"0"<<i<<endl;
+//                    break;
+//            }
+//            else
+//            {
+//                cout<<i<<endl;
+//                    break;
+//            }
+//        }
+//    }
+//    return 0;
+//}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
